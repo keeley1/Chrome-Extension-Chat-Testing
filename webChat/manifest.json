@@ -1,0 +1,18 @@
+  {
+    "name": "web chat",
+    "version": "1.0.0",
+    "description": "web chat",
+    "manifest_version": 3,
+    "author": "Keeley Gardner",
+    "permissions": ["storage", "declarativeContent", "activeTab", "scripting", "http://chrome-extension/*"],
+    "host_permissions": [""],
+    "action":{
+        "default_popup": "index.html",
+        "default_title": "web chat"
+    },
+    "content_scripts": [{
+        "matches": ["*://*/*"],
+        "js": ["index.js", "script.js", "node_modules/socket.io/client-dist/socket.io.js"]
+    }]
+}
+  
