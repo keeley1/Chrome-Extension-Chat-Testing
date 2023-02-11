@@ -14,7 +14,7 @@
  ```
  node index.js
 ```
-Then naviagte to [Chrome extensions](chrome://extensions/) on a chrome browser and turn developer mode on (toggle on right corner). Select to "load unpacked" and select the project folder. You should now be able to pin and use the chrome extension!
+Then naviagte to "chrome://extensions/" on a chrome browser and turn developer mode on (toggle on right corner). Select to "load unpacked" and select the project folder. You should now be able to pin and use the chrome extension!
 
 The extension can also be viewed as a webpage at [localhost:3000](http://localhost:3000/).
 
