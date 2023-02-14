@@ -9,13 +9,23 @@
     <link rel="stylesheet" type="text/css" href="/styles.css">
 </head>
 <body>
-    <p>Web chat</p>
-    <form id="form">
-        <input id="input" type="text" autocomplete="off">
-        <input type="submit" value="send">    
-    </form>
-    <p id="messages">
-    </p>
+    <div class="header">
+        <div class="title">
+            <h1>VCE Goldsmiths</h1>
+        </div>
+        <div class="buttons">
+            <a href="/index.html"><button id="button-two">Home</button></a>
+        </div>
+    </div>
+    <p id="messages"></p>
+    <div class="messaging-area">
+        <form id="form">
+            <input id="input" type="text" autocomplete="off" class="type-message">
+            <input type="submit" value="send" class="send-message">    
+        </form>
+    </div>
+    <p id="user-number"></p>
+    <p id="error-messages"></p>
     <script src="./script.js"></script>
 </body>
 </html>

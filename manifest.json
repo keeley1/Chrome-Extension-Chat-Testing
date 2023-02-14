@@ -1,14 +1,14 @@
   {
-    "name": "web chat",
+    "name": "VCE Goldsmiths",
     "version": "1.0.0",
-    "description": "web chat",
+    "description": "VCE Goldsmiths",
     "manifest_version": 3,
     "author": "Keeley Gardner",
     "permissions": ["storage", "declarativeContent", "activeTab", "scripting", "http://chrome-extension/*"],
     "host_permissions": [""],
     "action":{
         "default_popup": "index.html",
-        "default_title": "web chat"
+        "default_title": "VCE Goldsmiths"
     },
     "content_scripts": [{
         "matches": ["*://*/*"],
