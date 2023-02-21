@@ -7,9 +7,25 @@
  - Node.js
  - Express
  - Socket.io
+ - MySQL
  
  ## Run Locally
- To run extension locally, clone or download a zip of the project, open a new terminal in the project folder and run command:
+ To run extension locally, clone or download a zip of the project.
+ 
+ In MySQL, create a new database for the project and run this code to create the messages table:
+ ```
+create table messages (id INT AUTO_INCREMENT, username VARCHAR(255) NOT NULL, message TEXT NOT NULL, messageQuery OK, 0 rows affected (0.08 sec)_TIMESTAMP, PRIMARY KEY(id));
+```
+Open the project in your code editor and edit the following code to match your database configuration:
+```
+const connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'your user',
+  password : 'your password',
+  database : 'database name'
+});
+```
+Then, open a new terminal in the project folder and run command:
  
  ```
  node index.js
