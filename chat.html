@@ -13,19 +13,24 @@
         <div class="title">
             <h1>VCE Goldsmiths</h1>
         </div>
-        <div class="buttons">
-            <a href="/index.html"><button id="button-two">Home</button></a>
+        <div class="info-container">
+            <div class="buttons">
+                <a href="/index.html"><button id="button-two">Home</button></a>
+            </div>
+            <div class="user-info">
+                <p id="user-number"></p>
+            </div>
         </div>
     </div>
-    <p id="messages"></p>
+    <ul id="messages"></ul>
     <div class="messaging-area">
         <form id="form">
             <input id="input" type="text" autocomplete="off" class="type-message">
-            <input type="submit" value="send" class="send-message">    
+            <input type="submit" value="Send" class="send-message">    
         </form>
     </div>
-    <p id="user-number"></p>
     <p id="error-messages"></p>
+    <p id="users-in-chat"></p>
     <script src="./script.js"></script>
 </body>
 </html>

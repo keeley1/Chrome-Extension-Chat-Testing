@@ -1,3 +1,7 @@
+//load in sound
+var messageSound = new Audio('/messageSound.mp3');
+messageSound.load();
+
 var socket = io('http://localhost:3000');
 
 //getting username
@@ -39,8 +43,17 @@ form.onsubmit = function(e) {
 }
 
 //ensure each new message is on a new line
-socket.on('message', function(msg) {
-    messages.innerHTML = msg + '<br/>' + messages.innerHTML;
+socket.on('message', function(msg, playSound) {
+    //messages.innerHTML = msg + '<br/>' + messages.innerHTML;
+    if (playSound) {
+        messageSound.play();
+        console.log('sound played');
+    }
+
+    var item = document.createElement('li');
+    item.textContent = msg;
+    messages.appendChild(item);
+    window.scrollTo(0, document.body.scrollHeight);
 });
 
 //counting number of users
@@ -48,3 +61,11 @@ socket.on('userNumber', function(count) {
     var displayUsers = document.getElementById('user-number');
     displayUsers.innerHTML = 'Users in chat: ' + count;
 });
+
+//display all users in chat
+socket.on('userList', function(users) {
+    var allUsers = document.getElementById('users-in-chat');
+    allUsers.innerHTML = 'Users: ' + users.join(', ');
+});
+
+

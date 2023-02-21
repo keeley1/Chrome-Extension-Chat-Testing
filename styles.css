@@ -10,6 +10,10 @@ html {
     margin-bottom: 10px;
 }
 
+.register-title {
+    text-align: center;
+}
+
 .button-container {
     margin: 5px auto;
 }
@@ -37,6 +41,7 @@ html {
     background-color: #55BCBC;
     border-radius: 5px;
     margin-bottom: 10px;
+    margin-right: 200px;
 }
 
 #button-two:hover {
@@ -62,3 +67,16 @@ html {
     background-color: #227d7d;
     color: white;
 }
+
+.info-container {
+    display: flex;
+}
+
+#messages { 
+    list-style-type: none; 
+    margin-bottom: 10px; 
+    padding: 0; 
+}
+
+#messages > li { padding: 0.5rem 1rem; }
+#messages > li:nth-child(odd) { background: #efefef; }

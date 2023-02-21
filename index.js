@@ -16,6 +16,8 @@ const connection = mysql.createConnection({
   database : 'VCE'
 });
 
+let playSound = true;
+
 connection.connect((err) => {
     if (err) throw err;
     console.log('Connected to the MySQL database!');
@@ -32,19 +34,21 @@ connection.connect((err) => {
     retrieveMessages
     };
 
-//user counter
+//user counting 
 let userNumber = 0;
+let users = new Array();
 
 //basic socket.io commands printing to the console
 io.on('connection', (socket) => {
     console.log('new client connected!');
+    //count number of users
     userNumber++;
     io.emit('userNumber', userNumber);
 
     retrieveMessages((err, messages) => {
         if (err) throw err;
         messages.forEach((message) => {
-            socket.emit('message', `${message.username}: ${message.message}`);
+            socket.emit('message', `${message.username}: ${message.message}`, playSound = false);
         });
     });
 
@@ -56,11 +60,15 @@ io.on('connection', (socket) => {
     var userName;
     socket.on('joined', (who) => {
         userName = who;
+        users.push(userName);
+        io.emit('userList', users);
+        console.log(users);
+
         console.log(`${userName} joined`);
         //emit when user joins the chat
-        socket.broadcast.emit('message', `${who} joined the chat`);
+        socket.broadcast.emit('message', `${who} joined the chat`, playSound = true);
     });
-    socket.on('message', (msg) => {
+    socket.on('message', (msg, playSound) => {
         console.log(`Received message from ${userName}`);    
 
         const insertMessageSql = `INSERT INTO messages (username, message) VALUES (?, ?)`;
@@ -72,10 +80,17 @@ io.on('connection', (socket) => {
          });
 
         //emit the message to users in the room + the username
-        io.emit('message', `${userName}: ${msg}`)
+        io.emit('message', `${userName}: ${msg}`, playSound = true)
     });
     socket.on('disconnect', () => {
-        io.emit('message', `${userName} has left the chat`);
+        let index = users.indexOf(userName);
+        if (index > -1) {
+            users.splice(index, 1);
+        }
+        console.log(users);
+        io.emit('userList', users);
+
+        io.emit('message', `${userName} has left the chat`, playSound = true);
         userNumber--;
         io.emit('userNumber', userNumber);
     });

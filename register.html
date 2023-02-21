@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <title>Register for VCE</title>
+</head>
+<body>
+    <div class="header">
+        <div class="title">
+            <h1>VCE Goldsmiths</h1>
+        </div>
+        <h3 class="register-title">Register</h3>
+    </div>
+
+    <div class="form-container">
+        <form action="/register" method="POST">
+            <label for="user-email">Email</label>
+            <input type="email" class="input" name="email" autocomplete="off" id="user-email" placeholder="Enter your email">
+            <label for="user-name">Username</label>
+            <input type="text" class="input" name="username" autocomplete="off" id="username" placeholder="Please enter a username">
+            <label for="user-password">Password</label>
+            <input type="password" class="input" name="password" id="password" placeholder="Enter a new password">
+            <input type="submit" value="register" class="input-button">
+        </form>
+    </div>
+
+</body>
+</html>
